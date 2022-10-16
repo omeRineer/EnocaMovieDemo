@@ -1,0 +1,29 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "CreatePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Add", "Movies", FormMethod.Post))
+{
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Film Adı</label>
+        @Html.TextBoxFor(x=>x.Name,new {@class="form-control"})
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Tür</label>
+        @Html.DropDownListFor(x=>x.GenreId,(List<SelectListItem>) ViewBag.Genres,new {@class="form-control"})
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Yönetmen</label>
+        @Html.DropDownListFor(x => x.DirectorId, (List<SelectListItem>) ViewBag.Directors, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Yapım Yılı</label>
+        @Html.TextBoxFor(x => x.Year, new { @class = "form-control" ,@type="number"})
+    </div>
+    <button class="btn btn-primary" type="submit">Kaydet</button>
+}
+
+
+

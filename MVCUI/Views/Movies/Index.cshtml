@@ -1,0 +1,10 @@
+﻿@model List<Movie>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@await Component.InvokeAsync("Movies",Model) 
+
+
+

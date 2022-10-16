@@ -1,0 +1,70 @@
+﻿@{ 
+    var genres = ViewBag.Genres as List<Genre>;
+    var directors = ViewBag.Directors as List<Director>;
+}
+<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+    <div class="card-header">Filtre</div>
+    @using (Html.BeginForm("GetByFilter", "Movies", FormMethod.Post))
+    {
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    Tür
+                </div>
+                <div class="card-body">
+                    @for (int i = 0; i < genres.Count; i++)
+                    {
+                        <div class="d-flex justify-content-between align-content-center">
+                            <label class="form-label h6 fw-bold m-0">@genres[i].Name</label>
+                            <input type="checkbox" id="@genres[i].Id" name="GenresId[@i]" value="@genres[i].Id" />
+                        </div>
+
+                        <hr class="text-dark" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    Yönetmen
+                </div>
+                <div class="card-body">
+                    @for (int i = 0; i < directors.Count; i++)
+                    {
+                        <div class="d-flex justify-content-between align-content-center">
+                            <label class="form-label h6 fw-bold m-0">@($"{directors[i].FirstName} {directors[i].LastName}")</label>
+                            <input type="checkbox" id="@directors[i].Id" name="DirectorsId[@i]" value="@directors[i].Id" />
+                        </div>
+
+                        <hr class="text-dark" />
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    Yapım Yılı
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="form-control" type="number" name="MinYear" value="MinYear" placeholder="Min Year" />
+                        </div>
+                        <div class="col-md-6">
+                            <input class="form-control" type="number" name="MaxYear" value="MaxYear" placeholder="Max Year" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success">Filtrele</button>
+        </div>
+    }
+
+</div>

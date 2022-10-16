@@ -1,0 +1,8 @@
+﻿@model List<Movie>
+@{
+    ViewData["Title"] = "GetByFilter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@await Component.InvokeAsync("Movies",Model) 
+

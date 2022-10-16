@@ -1,0 +1,31 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Movies", FormMethod.Post))
+{
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Film Id</label>
+        @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Film Adı</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Tür</label>
+        @Html.DropDownListFor(x => x.GenreId, (List<SelectListItem>) ViewBag.Genres, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Yönetmen</label>
+        @Html.DropDownListFor(x => x.DirectorId, (List<SelectListItem>) ViewBag.Directors, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Film Adı</label>
+        @Html.TextBoxFor(x => x.Year, new { @class = "form-control", @type = "number" })
+    </div>
+    <button class="btn btn-warning" type="submit">Güncelle</button>
+}
+
